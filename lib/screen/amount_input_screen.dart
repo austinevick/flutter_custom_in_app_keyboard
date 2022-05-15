@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_keyboard/constant.dart';
+import 'package:flutter_custom_keyboard/screen/otp_keyboard_screen.dart';
 import 'package:flutter_custom_keyboard/widget/custom_button.dart';
 
 import '../widget/amount_container.dart';
@@ -35,9 +36,24 @@ class _AmountInputScreenState extends State<AmountInputScreen> {
           child: Column(
         children: [
           const SizedBox(height: 30),
-          const Text(
-            'Please enter amount',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const SizedBox(
+                height: 40,
+                width: 40,
+              ),
+              const Text(
+                'Please enter amount',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              IconButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (ctx) => const OTPKeyboardScreen()));
+                  },
+                  icon: Icon(Icons.navigate_next, size: 35))
+            ],
           ),
           const Divider(thickness: 2),
           const SizedBox(height: 25),
