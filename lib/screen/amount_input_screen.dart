@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_keyboard/constant.dart';
 import 'package:flutter_custom_keyboard/screen/otp_keyboard_screen.dart';
-import 'package:flutter_custom_keyboard/widget/custom_button.dart';
+import 'package:flutter_custom_keyboard/widget/keypad_button.dart';
 
 import '../widget/amount_container.dart';
 
@@ -117,7 +117,7 @@ class _AmountInputScreenState extends State<AmountInputScreen> {
     );
   }
 
-  Widget buildDelButton() => CustomButton(
+  Widget buildDelButton() => KeypadButton(
         onPressed: () {
           if (amount.first != amount.last) {
             if (amount.length >= 3) {
@@ -132,7 +132,7 @@ class _AmountInputScreenState extends State<AmountInputScreen> {
         child: const Icon(Icons.backspace),
       );
 
-  Widget buildDotButton() => CustomButton(
+  Widget buildDotButton() => KeypadButton(
         onPressed: () {
           if (!amount.contains('.') && !isAmountLimitReached()) {
             if (amount.first != amount.last) {
@@ -146,7 +146,7 @@ class _AmountInputScreenState extends State<AmountInputScreen> {
         child: const Text('.', style: style),
       );
 
-  Widget buildNumberButton(String text) => CustomButton(
+  Widget buildNumberButton(String text) => KeypadButton(
         onPressed: () {
           if (text.contains('0')) {
             if (amount.first != amount.last && !isAmountLimitReached()) {
