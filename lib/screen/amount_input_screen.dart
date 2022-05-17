@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_keyboard/constant.dart';
-import 'package:flutter_custom_keyboard/screen/otp_keyboard_screen.dart';
+import 'package:flutter_custom_keyboard/widget/otp_keyboard_screen.dart';
 import 'package:flutter_custom_keyboard/widget/keypad_button.dart';
 
 import '../widget/amount_container.dart';

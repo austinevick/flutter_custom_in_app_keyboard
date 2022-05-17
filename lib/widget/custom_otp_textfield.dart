@@ -1,5 +1,6 @@
-import 'package:bridge_finance/common/constants.dart';
 import 'package:flutter/material.dart';
+
+import '../constant.dart';
 
 class CustomOTPTextField extends StatelessWidget {
   final String value;

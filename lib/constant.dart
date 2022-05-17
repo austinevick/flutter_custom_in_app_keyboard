@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 const style = TextStyle(
-  fontSize: 30,
+  fontSize: 20,
   fontWeight: FontWeight.bold,
 );
 const primaryColor = Color(0xff47E690);

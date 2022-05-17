@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_keyboard/constant.dart';
 import 'package:flutter_custom_keyboard/widget/custom_button.dart';
-import 'package:flutter_custom_keyboard/widget/keypad_button.dart';
 
-import '../widget/custom_otp_textfield.dart';
+import 'custom_otp_textfield.dart';
 
 class OTPKeyboardScreen extends StatefulWidget {
-  const OTPKeyboardScreen({Key? key}) : super(key: key);
+  final String? headingText;
+  final String? subText;
+  final VoidCallback? onPressed;
+  final String? buttonText;
+  const OTPKeyboardScreen(
+      {Key? key,
+      this.headingText = '',
+      this.subText = '',
+      this.onPressed,
+      this.buttonText})
+      : super(key: key);
 
   @override
   State<OTPKeyboardScreen> createState() => _OTPKeyboardScreenState();
@@ -28,11 +37,10 @@ class _OTPKeyboardScreenState extends State<OTPKeyboardScreen> {
             children: [
               const SizedBox(height: 50),
               Text(
-                'Create a transaction pin',
+                widget.headingText!,
                 style: style.copyWith(color: boldTextColor),
               ),
-              const Text(
-                  'Create a unique username to accept transfers and a lot more.'),
+              Text(widget.subText!),
               const SizedBox(height: 50),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -75,19 +83,20 @@ class _OTPKeyboardScreenState extends State<OTPKeyboardScreen> {
               const Spacer(),
               Center(
                 child: CustomButton(
-                  onPressed: () {
-                    final pin = field1 + field2 + field3 + field4;
-                    if (pin.length == 4) {
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: SizedBox(
-                              height: 60,
-                              child: Text(
-                                'your pin is confirm $pin',
-                                style: style,
-                              ))));
-                    }
-                  },
-                  text: 'Proceed',
+                  onPressed: widget.onPressed,
+                  // () {
+                  //   final pin = field1 + field2 + field3 + field4;
+                  //   if (pin.length == 4) {
+                  //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  //         content: SizedBox(
+                  //             height: 60,
+                  //             child: Text(
+                  //               'your pin is confirm $pin',
+                  //               style: style,
+                  //             ))));
+                  //   }
+                  // },
+                  text: widget.buttonText,
                 ),
               )
             ],
@@ -95,13 +104,12 @@ class _OTPKeyboardScreenState extends State<OTPKeyboardScreen> {
     );
   }
 
-  void resetFieldOnExit() {
-    field1 = '';
-    field2 = '';
-    field3 = '';
-    field4 = '';
-    setState(() {});
-  }
+  void resetFieldOnExit() => setState(() {
+        field1 = '';
+        field2 = '';
+        field3 = '';
+        field4 = '';
+      });
 
   Widget buildNumberButton(String text) => Expanded(
         child: Padding(

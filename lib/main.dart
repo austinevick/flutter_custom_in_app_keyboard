@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_custom_keyboard/constant.dart';
 import 'package:flutter_custom_keyboard/screen/amount_input_screen.dart';
+import 'package:flutter_custom_keyboard/screen/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,10 +14,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const AmountInputScreen(),
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: const HomeScreen(),
     );
   }
 }
