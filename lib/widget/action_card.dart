@@ -16,7 +16,7 @@ class ActionCard extends StatelessWidget {
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(3),
               topLeft: Radius.circular(16),
-              bottomRight: Radius.circular(3),
+              bottomRight: Radius.circular(16),
               topRight: Radius.circular(16)),
           borderSide: BorderSide(color: primaryColor, width: 1.8)),
       child: MaterialButton(

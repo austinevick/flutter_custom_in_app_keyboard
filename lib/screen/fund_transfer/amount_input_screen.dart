@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_keyboard/constant.dart';
 import 'package:flutter_custom_keyboard/model/friends.dart';
-import 'package:flutter_custom_keyboard/screen/transaction_pin_screen.dart';
+import 'package:flutter_custom_keyboard/screen/fund_transfer/transaction_pin_screen.dart';
 import 'package:flutter_custom_keyboard/widget/custom_button.dart';
 import 'package:flutter_custom_keyboard/widget/otp_keyboard_screen.dart';
 import 'package:flutter_custom_keyboard/widget/keypad_button.dart';
 
-import '../widget/amount_container.dart';
+import '../../widget/amount_container.dart';
 
 class AmountInputScreen extends StatefulWidget {
   final List<Friends>? selectedFriends;

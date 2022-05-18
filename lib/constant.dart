@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-const testKey = 'pk_test_41876ab4415d1bae0587d97f536b639256f115ab';
 const style = TextStyle(
   fontSize: 20,
   fontWeight: FontWeight.bold,
