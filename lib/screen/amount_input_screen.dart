@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_keyboard/constant.dart';
+import 'package:flutter_custom_keyboard/model/friends.dart';
+import 'package:flutter_custom_keyboard/screen/transaction_pin_screen.dart';
+import 'package:flutter_custom_keyboard/widget/custom_button.dart';
 import 'package:flutter_custom_keyboard/widget/otp_keyboard_screen.dart';
 import 'package:flutter_custom_keyboard/widget/keypad_button.dart';
 
 import '../widget/amount_container.dart';
 
 class AmountInputScreen extends StatefulWidget {
-  const AmountInputScreen({Key? key}) : super(key: key);
+  final List<Friends>? selectedFriends;
+  const AmountInputScreen({Key? key, this.selectedFriends}) : super(key: key);
 
   @override
   State<AmountInputScreen> createState() => _AmountInputScreenState();
@@ -32,31 +36,28 @@ class _AmountInputScreenState extends State<AmountInputScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Enter amount'),
+      ),
       body: SafeArea(
           child: Column(
         children: [
-          const SizedBox(height: 30),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const SizedBox(
-                height: 40,
-                width: 40,
-              ),
-              const Text(
-                'Please enter amount',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              IconButton(
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (ctx) => const OTPKeyboardScreen()));
-                  },
-                  icon: Icon(Icons.navigate_next, size: 35))
-            ],
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: List.generate(
+                  widget.selectedFriends!.length,
+                  (i) => const Align(
+                      widthFactor: .7,
+                      child: CircleAvatar(
+                          radius: 24,
+                          backgroundColor: Colors.white,
+                          child: Padding(
+                            padding: EdgeInsets.all(4.0),
+                            child: CircleAvatar(),
+                          )))),
+            ),
           ),
-          const Divider(thickness: 2),
-          const SizedBox(height: 25),
           const Spacer(),
           AmountContainer(
             amount: amount,
@@ -92,26 +93,14 @@ class _AmountInputScreenState extends State<AmountInputScreen> {
             ],
           ),
           const SizedBox(height: 25),
-          MaterialButton(
+          CustomButton(
             onPressed: () {
               print(amount.join().replaceAll(r'$', ''));
+              push(context, const TransactionPinScreen());
             },
-            shape: OutlineInputBorder(
-                borderSide: BorderSide.none,
-                borderRadius: BorderRadius.circular(15)),
-            minWidth: 300,
-            height: 60,
-            color: Colors.black,
-            child: const Text(
-              'SEND',
-              style: TextStyle(
-                fontSize: 35,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            text: 'Proceed',
           ),
-          const SizedBox(height: 25),
+          const SizedBox(height: 8),
         ],
       )),
     );
@@ -158,6 +147,7 @@ class _AmountInputScreenState extends State<AmountInputScreen> {
             addValueToAmount(text);
           }
         },
-        child: Text(text, style: style),
+        child: Text(text,
+            style: style.copyWith(color: Colors.white, fontSize: 28)),
       );
 }

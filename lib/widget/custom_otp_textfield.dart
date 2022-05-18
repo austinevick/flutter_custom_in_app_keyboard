@@ -24,7 +24,7 @@ class CustomOTPTextField extends StatelessWidget {
           ),
           child: Text(
             value.isNotEmpty ? '\u{002A}' : value,
-            style: style.copyWith(fontSize: 30),
+            style: style.copyWith(fontSize: 30, color: Colors.black),
           )),
     );
   }
