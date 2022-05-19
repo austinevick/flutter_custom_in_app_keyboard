@@ -1,6 +1,11 @@
 # flutter_custom_keyboard
 
---[Medium 👉](https://augustinevickky.medium.com/flutter-one-time-password-screen-without-plugin-e8517df423d5)
+### Video
+![LinkedIn](https://www.linkedin.com/feed/update/ugcPost:6932668776475684864)
+### Medium post👇
+[Medium](https://augustinevickky.medium.com/flutter-one-time-password-screen-without-plugin-e8517df423d5)
+
+
 A new Flutter project.
 
 ## Getting Started
